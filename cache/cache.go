@@ -4,14 +4,19 @@ import (
 	"log"
 )
 
-var cache map[string]interface{}
+var cache map[string]any
 
-func Set(key string, value interface{}) {
-	cache[key] = value
+func Set(key string, value any) {
+	cache = map[string]any{
+		key: value,
+	}
 }
 
-func Get(key string) interface{} {
-	return cache[key]
+func Get(key string) any {
+	if _, ok := cache[key]; ok {
+		return cache[key]
+	}
+	return "key NOT found"
 }
 
 func Delete(key string) {
