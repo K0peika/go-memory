@@ -15,5 +15,6 @@ func Get(key string) interface{} {
 }
 
 func Delete(key string) {
-	log.Println("Delete %s")
+	cache[key] = nil
+	log.Printf("deletion of %s - successful", key)
 }
